@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purr-fect Cat Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffe4e1;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #gallery {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        #gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        #fullScreenViewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #fullScreenViewer img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            display: block;
+        }
+
+        #backButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff7f50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #uploadSection {
+            margin: 20px;
+            text-align: center;
+            padding: 20px;
+            background-color: #ffefd5;
+            border-radius: 10px;
+        }
+
+        #uploadSection input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>Welcome to Purr-fect Cat Gallery! <br> Your daily dose of feline cuteness awaits!</header>
+
+    <div id="gallery">
+        <img src="https://img.freepik.com/premium-photo/portrait-funny-grey-cat-with-open-mouth-sunglasses-cat-licking-lips-copy-space_265657-359.jpg" data-full="https://img.freepik.com/premium-photo/portrait-funny-grey-cat-with-open-mouth-sunglasses-cat-licking-lips-copy-space_265657-359.jpg" title="Adorable Tabby" alt="Cat 1">
+        <img src="https://media.istockphoto.com/id/633114008/photo/white-persian-cats.jpg?s=612x612&w=0&k=20&c=CwjTbqPF7_4aO9TUhX3XpaPJ7ozxVpY4-tKpKliK-rg=" data-full="https://media.istockphoto.com/id/633114008/photo/white-persian-cats.jpg?s=612x612&w=0&k=20&c=CwjTbqPF7_4aO9TUhX3XpaPJ7ozxVpY4-tKpKliK-rg=" title="Fluffy Persian" alt="Cat 2">
+        <img src="https://www.purina.in/sites/default/files/styles/ttt_image_510/public/2020-11/7-Grey-Cat-Breeds1.jpg?itok=ASscmCmU" data-full="https://www.purina.in/sites/default/files/styles/ttt_image_510/public/2020-11/7-Grey-Cat-Breeds1.jpg?itok=ASscmCmU" title="Playful Kitten" alt="Cat 3">
+        <img src="https://www.thesprucepets.com/thmb/98pEYVh77AAtktXi9NEAbMj5FRE=/2127x0/filters:no_upscale():strip_icc()/SiberianCatGettyJeanMichelSegaudEyeEm-48078e579913406a9303e5d954084d15.jpg" data-full="https://www.thesprucepets.com/thmb/98pEYVh77AAtktXi9NEAbMj5FRE=/2127x0/filters:no_upscale():strip_icc()/SiberianCatGettyJeanMichelSegaudEyeEm-48078e579913406a9303e5d954084d15.jpg" title="Russian" alt="Cat 4">
+        <img src="https://static.india.com/wp-content/uploads/2023/11/Balinese.jpg?impolicy=Medium_Widthonly&w=400&h=800" data-full="https://static.india.com/wp-content/uploads/2023/11/Balinese.jpg?impolicy=Medium_Widthonly&w=400&h=800" title="Ragdoll" alt="Cat 5">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/050/750/763/small_2x/cute-curious-gray-and-white-kitten-extracted-photo.jpg" data-full="https://static.vecteezy.com/system/resources/thumbnails/050/750/763/small_2x/cute-curious-gray-and-white-kitten-extracted-photo.jpg" title="Baby cat" alt="Cat 6">
+        <img src="https://image.petmd.com/files/inline-images/big-cat-breeds-savannah-cat.jpg?VersionId=mgl9kEVzhYRxzjMS2YRnuuelb12l.f2a" data-full="https://image.petmd.com/files/inline-images/big-cat-breeds-savannah-cat.jpg?VersionId=mgl9kEVzhYRxzjMS2YRnuuelb12l.f2a" title="Tiger cat" alt="Cat 7">
+        <img src="https://neaterpets.com/cdn/shop/articles/Odd-eyed_cat_by_ihasb33r.jpg?v=1598286269&width=1600" data-full="https://neaterpets.com/cdn/shop/articles/Odd-eyed_cat_by_ihasb33r.jpg?v=1598286269&width=1600" title="White cat" alt="Cat 8">
+        <img src="https://www.healthypawspetinsurance.com/blog/wp-content/uploads/2020/11/maine-coon-cat-lying-down.jpg?w=1000" data-full="https://www.healthypawspetinsurance.com/blog/wp-content/uploads/2020/11/maine-coon-cat-lying-down.jpg?w=1000" title="Royal cat" alt="Cat 9">
+        <img src="https://i.insider.com/5b058ff442e1cc176243ac4a?width=800&format=jpeg&auto=webp" data-full="https://i.insider.com/5b058ff442e1cc176243ac4a?width=800&format=jpeg&auto=webp" title="Blue eyed" alt="Cat 10">
+    </div>
+
+    <div id="fullScreenViewer">
+        <img id="fullScreenImage" src="" alt="Full-size Cat Image">
+        <button id="backButton">Back</button>
+    </div>
+
+    <div id="uploadSection">
+        <p>Have a cute cat? Share their picture with us and make them a star!</p>
+        <input type="file" id="fileInput">
+        <button id="uploadButton">Upload</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gallery = document.getElementById('gallery');
+            const fullScreenViewer = document.getElementById('fullScreenViewer');
+            const fullScreenImage = document.getElementById('fullScreenImage');
+            const backButton = document.getElementById('backButton');
+            const fileInput = document.getElementById('fileInput');
+            const uploadButton = document.getElementById('uploadButton');
+
+            fullScreenImage.src = '';
+
+            gallery.addEventListener('click', (event) => {
+                const target = event.target;
+                if (target.tagName === 'IMG') {
+                    const fullSizeImage = target.getAttribute('data-full');
+                    fullScreenImage.src = fullSizeImage;
+                    fullScreenViewer.style.display = 'flex';
+                }
+            });
+
+            backButton.addEventListener('click', () => {
+                fullScreenViewer.style.display = 'none';
+                fullScreenImage.src = '';
+            });
+
+            gallery.addEventListener('mouseover', (event) => {
+                const target = event.target;
+                if (target.tagName === 'IMG') {
+                    const tooltip = document.createElement('div');
+                    tooltip.textContent = target.title;
+                    tooltip.className = 'tooltip';
+                    document.body.appendChild(tooltip);
+
+                    const rect = target.getBoundingClientRect();
+                    tooltip.style.left = `${rect.left}px`;
+                    tooltip.style.top = `${rect.top - tooltip.offsetHeight - 5}px`;
+                }
+            });
+
+            gallery.addEventListener('mouseout', () => {
+                const tooltip = document.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+
+            uploadButton.addEventListener('click', () => {
+                const file = fileInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.title = file.name;
+                        img.alt = file.name;
+                        img.setAttribute('data-full', e.target.result);
+                        gallery.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
